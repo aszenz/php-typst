@@ -46,4 +46,4 @@ jobs:
 
       - name: Test extension
         run: |
-          php -d extension=./php-typ/target/debug/libtyp_php.so ./test.php
+          php -d extension=./php-typ/target/release/libtyp_php.so ./test.php
