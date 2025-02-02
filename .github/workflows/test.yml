@@ -1,0 +1,37 @@
+name: Test
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  build-and-test:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP-dev
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4-dev"
+
+      - name: Setup rust
+        run: |
+          rustup toolchain install stable --profile minimal
+
+      - name: Build extension
+        run: |
+          cd php-typ
+          cargo build --release
+
+      - name: Test extension
+        run: |
+          php -d extension=./php-typ/target/debug/libtyp_php.so ./test.php

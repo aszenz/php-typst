@@ -1,0 +1,18 @@
+[package]
+name = "typ-php"
+version = "0.1.0"
+edition = "2021"
+
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+ext-php-rs = "*"
+typst = "0.12"
+typst-as-library = { path = "../typst-as-library" }
+typst-pdf = "0.12"
+typst-svg = "0.12"
+
+[profile.release]
+strip = "debuginfo"
