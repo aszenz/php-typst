@@ -4,7 +4,13 @@ PHP extension for compiling Typst documents
 
 ## Development
 
-### Install dev version of PHP
+### Install deps
+
+```sh
+sudo apt install bison re2c llvm clang libclang-dev
+```
+
+### Install deps and dev version of PHP
 
 ```sh
 sudo apt install php-dev
@@ -15,7 +21,6 @@ OR
 ### Build PHP from source at `$HOME/build/php`
 
 ```sh
-sudo apt install bison re2c llvm clang libclang-dev
 git clone https://github.com/php/php-src.git
 cd php-src
 git checkout PHP-8.3
