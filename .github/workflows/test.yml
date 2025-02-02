@@ -21,11 +21,23 @@ jobs:
       - name: Setup PHP-dev
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.4-dev"
+          php-version: "8.3-dev"
 
       - name: Setup rust
         run: |
           rustup toolchain install stable --profile minimal
+
+      - name: Cache cargo dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
 
       - name: Build extension
         run: |
