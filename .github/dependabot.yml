@@ -1,0 +1,16 @@
+version: 2
+updates:
+  # Enable version updates for cargo
+  - package-ecosystem: "cargo"
+    directory: "/"
+    # Check for updates every day (weekdays)
+    schedule:
+      interval: "weekly"
+    # Limit to 10 open pull requests for version updates
+    open-pull-requests-limit: 10
+
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
