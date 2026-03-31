@@ -1,5 +1,7 @@
 # php-typst
 
+ARCHIVED: Use https://github.com/carthage-software/ext-typst instead for a more feature rich supported extension.
+
 PHP extension for compiling Typst documents
 
 ## Development
